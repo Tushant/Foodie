@@ -66,13 +66,13 @@ class Restaurant(models.Model):
 	phone_number = models.PositiveIntegerField()
 	owner_email = models.EmailField()
 	opening_status = models.IntegerField(choices=OPENING_STATUS, default=OPEN)
-	website = models.CharField(max_length=300, validators=[URLValidator()])
+	website = models.URLField(max_length=300)
 	features = models.ManyToManyField(Choice, related_name="restaurants_features")
 	timings = models.ManyToManyField(Choice, related_name="restaurants_timings")
 	opening_from = models.TimeField()
 	opening_to = models.TimeField()
 	facebook_page = models.CharField(max_length=300, validators=[URLValidator()])
-	twitter_handle = models.CharField(max_length=30, blank=True, null=True)
+	twitter_handle = models.CharField(max_length=15, blank=True, null=True)
 	other_details = models.TextField()
 	available = models.BooleanField(default=True)
 	created = models.DateTimeField(auto_now_add=True)
@@ -89,6 +89,33 @@ class Restaurant(models.Model):
 
 	# def get_absolute_url(self):
 	# 	return reverse('restaurant:restaurant_detail', args=[self.id, self.slug])
+
+
+class OperatingTime(models.Model):
+	MONDAY = 1
+	TUESDAY = 2
+	WEDNESDAY = 3
+	THURSDAY = 4
+	FRIDAY = 5
+	SATURDAY = 6
+	SUNDAY = 7
+
+	DAY_IN_A_WEEK = (
+		(MONDAY, 'Monday'),
+		(TUESDAY, 'Tuesday'),
+		(WEDNESDAY, 'Wednesday'),
+		(THURSDAY, 'Thursday'),
+		(FRIDAY, 'Friday'),
+		(SATURDAY, 'Saturday'),
+		(SUNDAY, 'Sunday'),
+		)
+	restaurant = models.ForeignKey(Restaurant,related_name="operating_time")
+	opening_time = models.TimeField()
+	closing_time = models.TimeField()
+	day_of_week = models.IntegerField(choices=DAY_IN_A_WEEK)
+
+	def __str__(self):
+		return '{} ---- {}'.format(self.opening_time, self.closing_time)
 
 
 class Category(models.Model):

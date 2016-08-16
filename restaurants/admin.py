@@ -1,6 +1,6 @@
 from django.contrib import admin
 
-from .models import Restaurant, Category, Menu, Choice
+from .models import Restaurant, Category, Menu, Choice, OperatingTime
 
 class RestaurantAdmin(admin.ModelAdmin):
 	list_display = ['name','slug','address','city', 'opening_status', 'available', 'phone_number',
@@ -17,6 +17,11 @@ admin.site.register(Choice)
 class CategoryAdmin(admin.ModelAdmin):
 	list_display = ['name','slug']
 	prepopulated_fields = { 'slug': ('name',) }
+
+
+class OperatingTimeAdmin(admin.ModelAdmin):
+	list_display = ['restaurant','opening_time','closing_time','day_of_week']
+admin.site.register(OperatingTime, OperatingTimeAdmin)
 
 admin.site.register(Category,CategoryAdmin)
 
