@@ -1,0 +1,119 @@
+{% load staticfiles %}
+<html>
+	<head>
+		<meta name="description" content="Foodie is the best restaurant finder app to search for and discover restaurants to eat out at or order in from."/>
+		<meta property="og:title" content="Best Restaurant Finder App"/>
+		<meta property="og:url" content="http://localhost:8000/"/>
+		<meta property="og:description" content="Foodie is the best restaurant finder app to search for and discover restaurants to eat out at or order in from."/>
+		<title>{% block title %}Foodie | Best Restaurant Finder App {% endblock title %}</title>
+	</head>
+	<link rel="stylesheet" type="text/css" href="{% static 'css/semantic.min.css' %}" />
+	<link rel="stylesheet" type="text/css" href="{% static 'css/main.css' %}" />
+	<body>
+		<!-- Following Menu -->
+{% block header %}
+	<div class='homeBackground'>
+		<div class="ui large top fixed hidden menu navbar">
+		  <div class="ui container">
+		    <div class="right menu">
+		    <div class="ui buttons">
+			  <a class="ui button tomato pair">Order Food</a>
+			  <div class="or"></div>
+			  <a class="ui positive button pair book">Book a Table</a>
+			</div>
+			<div class="ui buttons">
+			 <li> <a class="ui button tomato loginbtn" onclick="AddLoginModalEvent()">Login</a></li>
+			</div>
+		    </div>
+		  </div>
+		</div>
+		<!-- Page Contents -->
+	<div class="pusher">
+	  <div class="ui inverted vertical masthead center aligned segment">
+
+	    <div class="ui container">
+	      <!-- <div class="ui large secondary inverted pointing menu">
+	        <a class="toc item">
+	          <i class="sidebar icon"></i>
+	        </a>
+	        <a class="active item">Foodie</a>
+	        <div class="right item">
+	          <a class="ui inverted button">Log in</a>
+	          <a class="ui inverted button">Sign Up</a>
+	        </div>
+	      </div> -->
+	    </div>
+
+	    <div class="ui text container">
+	      <h1 class="ui inverted header">
+	        Foodie
+	      </h1>
+	      <h2>Find the best restaurants, cafés and bars in Ktm</h2>
+	     <div class="ui form container column four grid centered">
+		  <div class="row">
+		  <div class="inline fields container">
+		  	<div class="column">
+			    <div class="field">
+			    	<div class="ui icon input">
+			     		<input type="text" placeholder="location">
+			    		<i class="search icon"></i>
+			    	</div>
+			    </div>
+			 </div>
+
+			<div class="column">
+		    <div class="field">
+		      <select multiple="" class="ui dropdown selectBox">
+		      	<option value="">Select Feature</option>
+		      	<option value="BR">Breakfast</option>
+		      	<option value="LA">Launch</option>
+		      	<option value="DI">Dinner</option>
+		      	<option value="DE">Delivery</option>
+		      	<option value="CA">Cafe</option>
+		      	<option value="LU">Luxury Dining</option>
+		      	<option value="NI">Night Life</option>
+		      </select>
+		    </div>
+		    </div>
+
+		    <div class="column">
+		    <div class="field">
+			    <a class="ui button negative find">Find Food</a>
+		    </div>
+		   </div>
+		   </div>
+
+		  </div>
+	    </div>
+	    </div>
+
+	  </div>
+	  </div>
+	 </div>
+{% endblock header %}
+
+	 <div id="loginmodal"></div>
+
+	 {% block content %}
+	 {% endblock %}
+
+	<script type="text/javascript" src="https://code.jquery.com/jquery-3.1.0.min.js"></script>
+	<script src="{% static 'js/semantic.min.js' %}"></script>
+	<script type="text/javascript" src="{% static 'build/js/app.js' %}"></script>
+	<script type="text/javascript">
+		  var data = {
+		         isUserAuthenticated:{% if request.user.is_authenticated %}true{% else %}false{% endif %}
+		    };
+
+		$(function() {
+
+		  app.showLoginModal("loginmodal",data);
+		});
+
+	</script>
+	<script>
+		$('select.dropdown')
+		  .dropdown();
+	</script>
+	</body>
+</html>

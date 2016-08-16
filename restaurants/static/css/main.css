@@ -1,0 +1,99 @@
+.body{
+	font-family: Ubuntu !important;
+}
+
+.homeBackground{
+	background: url('../img/bbq.jpg') center center no-repeat;
+	background-size: cover;
+}
+
+.navbar{
+	background: transparent !important;
+	margin-top: 20px !important;
+
+}
+
+.navbar a{
+	color:#fff !important;
+}
+
+.pair{
+	padding:1em 1em !important;
+	
+}
+
+.book{
+	background: #11d3cb !important;
+}
+
+.loginbtn{
+	padding:1em 2em !important;
+}
+
+a.loginbtn{
+	background: #fff !important;
+    color: rgba(0,0,0,0.6) !important;
+    border-color:#ddd8d8 !important;
+    border-style: solid !important;
+    border-width: 1px !important;
+}
+
+.ui.buttons{
+	margin:10px;
+}
+
+.ui.buttons.login {
+    color: #000 !important;
+    background: #fff !important;
+}
+
+.selectBox{
+	width: 100% !important;
+}
+
+.find{
+	width: 100% !important;
+}
+
+.masthead{
+	padding: 10em !important;
+	background: url('../img/bbq.jpg') center center no-repeat !important;
+	background-size: cover !important;
+}
+
+.tomato{
+	color:#fff !important;
+	background:#ff5f5f !important;
+}
+
+/*  form */
+
+.form 
+{
+	margin-top: 3em !important;
+}
+
+.default.text{
+	color:#000 !important;
+}
+
+::-webkit-input-placeholder {
+   color: #000 !important;
+}
+
+:-moz-placeholder { /* Firefox 18- */
+   color: #000 !important;  
+}
+
+::-moz-placeholder {  /* Firefox 19+ */
+   color: #000 !important;  
+}
+
+:-ms-input-placeholder {  
+   color: #000 !important;  
+}
+
+.infobox{
+	border: solid 1px #ddd;
+	color:#666;
+}

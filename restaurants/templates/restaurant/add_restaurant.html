@@ -1,0 +1,129 @@
+{% extends 'restaurant/base.html' %}
+
+{% block title %}
+	Add Restaurant 
+{% endblock title %}
+
+{% block header %}
+	<div class="ui large top fixed hidden menu navbar">
+	  <div class="ui container">
+	    <div class="right menu">
+	    <div class="ui buttons">
+		  <a class="ui button tomato pair">Order Food</a>
+		  <div class="or"></div>
+		  <a class="ui positive button pair book">Book a Table</a>
+		</div>
+		<div class="ui buttons">
+		  <a class="ui button tomato loginbtn" href='javascript:;' onClick="AddLoginModalEvent();">Login</a>
+		</div>
+	    </div>
+	  </div>
+	</div>
+{% endblock header%}
+
+{% block content %}
+	<div class="ui vertical stripe segment" style="margin-top:5em;">
+    <div class="ui middle aligned stackable grid container">
+    <h3 class="grey-text">Add a new restaurant</h3>
+      <div class="row">
+      		<div class="twelve wide column">
+      			<div class="ui segment">
+                <label class="grey-text right"> *Required </label>
+                <form autocomplete="false" class="ui form" enctype="multipart/form-data" method="POST" action="">                   
+					<div class="field">
+				    <label class="grey-text">RESTAURANT NAME*</label>
+				    <input type="text" name="first-name" placeholder="">
+				  </div>
+				  <div class="field">
+				    <label class="grey-text">RESTAURANT ADDRESS*</label>
+				    <input type="text" name="address" placeholder="">
+				  </div>
+				   <div class="field">
+				    <label class="grey-text">CITY*</label>
+				    <input type="text" name="city" placeholder="">
+				  </div>
+				   <div class="field">
+				    <label class="grey-text">RESTAURANT PHONE NUMBER*</label>
+				    <input type="text" name="phone" placeholder="">
+				  </div>
+				   <div class="field">
+				    <label class="grey-text">OWNER EMAIL*</label>
+				    <input type="email" name="address" placeholder="">
+				  </div>
+				    <div class="field">
+				    <label class="grey-text">OPENING STATUS*</label>
+				    <select class="ui dropdown">
+				    	<option value="">Opening Status</option>
+				    </select>
+				  </div>
+				    <div class="field">
+				    <label class="grey-text">RESTAURANT WEBSITE*</label>
+				    <input type="text" name="website" placeholder="">
+				  </div>
+				    <div class="field">
+				    <label class="grey-text">Features*</label>
+				    <select multiple="" class="ui dropdown">
+				    	<option value="">Features</option>
+				    </select>
+				  </div>
+				    <div class="field">
+				    <label class="grey-text">TIMINGS*</label>
+				    <select multiple="" class="ui dropdown">
+				    	<option value="">Timings</option>
+				    </select>
+				  </div>
+				    <div class="two fields">
+				    	<div class="field">
+				    		<label class="grey-text">FROM*</label>
+					    	<input type="text" name="address" placeholder="">
+				    	</div>
+				    	<div class="field">
+				    		<label class="grey-text">TO*</label>
+					    	<input type="text" name="address" placeholder="">
+				    	</div>
+				  </div>
+				 <div class="field">
+				    <label class="grey-text">FACEBOOK PAGE*</label>
+				    <input type="text" name="website" placeholder="">
+				  </div>
+				   <div class="field">
+				    <label class="grey-text">TWITTER HANDLE*</label>
+				    <input type="text" name="website" placeholder="">
+				  </div>
+				    <div class="field">
+				    <label class="grey-text">DETAIL*</label>
+				    <input type="text" name="website" placeholder="">
+				  </div>
+                </form>
+            </div>
+      		</div>
+
+			<div class="four wide right stackable column segment">
+	          <div class="ui segment">
+                <h3>How it works</h3>
+                <ul class="ui list">
+                    <li>
+                        <p>
+                            If you are the owner of a restaurant, or if you are a user who's discovered a place not listed on Foodie, let us know using this form.
+                        </p>
+                    </li>
+                    <li>
+                        <p>
+                            Once you send the information to us, our awesome content team will verify it. To help speed up the process, please provide a contact number or email address.
+                        </p>
+                    </li>
+                    <li>
+                        <p>
+                            That's it! Once verified the listing will start appearing on Foodie
+                        </p>
+                    </li>
+                </ul>
+            </div>
+	        </div>
+
+      </div>
+    </div>
+    </div>
+
+{% endblock %}
+
