@@ -1,9 +1,9 @@
 # from multiselectfield import MultiSelectField
-from django.core.validators import URLValidator
 from django.core.urlresolvers import reverse
 from django.contrib.auth.models import User
 
 from django.db import models
+
 
 class Choice(models.Model):
 	BREAKFAST = 'BR'
@@ -58,6 +58,14 @@ class Restaurant(models.Model):
 		(CLOSED, 'closed'),
 		)
 
+	# STARS = (
+	# 		(1, 'one'),
+	# 		(2, 'two'),
+	# 		(3, 'three'),
+	# 		(4, 'four'),
+	# 		(5, 'five'),
+	# 	)
+
 	owner = models.ForeignKey(User)
 	name = models.CharField(max_length=150, db_index=True)
 	slug = models.SlugField(max_length=150, db_index=True)
@@ -71,9 +79,10 @@ class Restaurant(models.Model):
 	timings = models.ManyToManyField(Choice, related_name="restaurants_timings")
 	opening_from = models.TimeField()
 	opening_to = models.TimeField()
-	facebook_page = models.CharField(max_length=300, validators=[URLValidator()])
+	facebook_page = models.URLField(max_length=200)
 	twitter_handle = models.CharField(max_length=15, blank=True, null=True)
 	other_details = models.TextField()
+	# votes = models.IntegerField(choices=STARS, default=5)
 	available = models.BooleanField(default=True)
 	created = models.DateTimeField(auto_now_add=True)
 	updated = models.DateTimeField(auto_now=True)
@@ -109,6 +118,7 @@ class OperatingTime(models.Model):
 		(SATURDAY, 'Saturday'),
 		(SUNDAY, 'Sunday'),
 		)
+	# HOURS = [(i, i) for i in range(1, 25)]
 	restaurant = models.ForeignKey(Restaurant,related_name="operating_time")
 	opening_time = models.TimeField()
 	closing_time = models.TimeField()
@@ -118,7 +128,7 @@ class OperatingTime(models.Model):
 		return '{} ---- {}'.format(self.opening_time, self.closing_time)
 
 
-class Category(models.Model):
+class MenuCategory(models.Model):
 	name = models.CharField(max_length=120,db_index=True) #veg, non-veg
 	slug = models.SlugField(max_length=120,db_index=True)
 
@@ -133,7 +143,14 @@ class Category(models.Model):
 
 
 class Menu(models.Model):
-	category = models.ForeignKey(Category, related_name="menu")
+	STARS = (
+		(1, 'one'),
+		(2, 'two'),
+		(3, 'three'),
+		(4, 'four'),
+		(5, 'five'),
+	)
+	menu_category = models.ForeignKey(MenuCategory, related_name="menu")
 	restaurant = models.ForeignKey(Restaurant)
 	name = models.CharField(max_length=120,db_index=True)
 	slug = models.SlugField(max_length=120,db_index=True)
@@ -141,6 +158,7 @@ class Menu(models.Model):
 	description = models.TextField(blank=True)
 	price = models.DecimalField(max_digits=10,decimal_places=2)
 	stock = models.PositiveIntegerField()
+	vote = models.SmallIntegerField(choices=STARS, default=5)
 	available = models.BooleanField(default=True)
 	created = models.DateTimeField(auto_now_add=True)
 	updated = models.DateTimeField(auto_now=True)
