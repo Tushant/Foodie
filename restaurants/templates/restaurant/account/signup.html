@@ -1,0 +1,47 @@
+{% extends "account/base.html" %}
+
+{% load i18n %}
+
+{% block head_title %}{% trans "Signup" %}{% endblock %}
+
+{% block content %}
+<h1 class="text-xs-center" style="margin-bottom:30px;">{% trans "Sign Up" %}</h1>
+
+<p class="text-xs-center" style="margin-bottom:40px;">{% blocktrans %}Already have an account? Then please <a href="{{ login_url }}">sign in</a>.{% endblocktrans %}</p>
+
+<form class="signup" id="signup_form" method="post" action="{% url 'account_signup' %}">
+  {% csrf_token %}
+  <div class="form-group has-feedback has-feedback-right row">
+  	<label for="id_username" class="col-sm-4 form-control-label">Username</label>
+  	<div class="col-sm-8">
+  		<input id="id_username" class="form-control" maxlength="30" name="username" placeholder="Username" type="text">
+  	</div>
+  </div>
+
+  <div class="form-group has-feedback has-feedback-right row">
+  	<label for="id_email" class="col-sm-4 form-control-label">Email</label>
+  	<div class="col-sm-8">
+  		<input id="id_email" class="form-control" maxlength="30" name="email" placeholder="E-mail address" type="email">
+  	</div>
+  </div>
+
+  <div class="form-group has-feedback has-feedback-right row">
+  	<label for="id_password1" class="col-sm-4 form-control-label">Password</label>
+  	<div class="col-sm-8">
+  		<input id="id_password1" class="form-control" maxlength="30" name="password1" placeholder="Password" type="password">
+  	</div>
+  </div>
+
+  <div class="form-group has-feedback has-feedback-right row">
+  	<label for="id_password2" class="col-sm-4 form-control-label">Re-Password</label>
+  	<div class="col-sm-8">
+  		<input id="id_password2" class="form-control" maxlength="30" name="password2" placeholder="Confirm Password" type="password">
+  		<input id="id_confirmation_key" maxlength="40" name="confirmation_key" type="hidden">
+  	</div>
+  </div>
+
+  <input type="hidden" name="{{ redirect_field_name }}" value="/" />
+  <button type="submit" class="pinkButton btn">{% trans "Sign Up" %}</button>
+</form>
+
+{% endblock %}

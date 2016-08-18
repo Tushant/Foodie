@@ -3,13 +3,6 @@ import $ from 'jquery';
 // import Footer from './components/Footer';
 // import { Router, Route, IndexRoute, hashHistory } from 'react-router';
 
-function AddLoginModalEvent(){
-	console.log('i am event');
-	let event = document.createEvent('Event');
-	event.initEvent('addLoginModal', true, true);
-	document.dispatchEvent(event);
-}
-
 class LoginModal extends React.Component {
 	constructor(props){
 		super(props);
@@ -19,13 +12,9 @@ class LoginModal extends React.Component {
 	}
 
 	componentDidMount() {
-		let self = this;
-		document.addEventListener('addLoginModal', (e) => {
-			self.showModal();
-		}, false);
+	
 		// $('.ui.modal').modal({detachable: false});
 		console.log('hello');
-		AddLoginModalEvent();
 		// console.log('addLoginModalevent',this.AddLoginModalEvent());
 	}
 

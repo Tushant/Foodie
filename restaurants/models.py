@@ -83,6 +83,7 @@ class Restaurant(models.Model):
 	twitter_handle = models.CharField(max_length=15, blank=True, null=True)
 	other_details = models.TextField()
 	# votes = models.IntegerField(choices=STARS, default=5)
+	is_favorite = models.BooleanField(default=False)
 	available = models.BooleanField(default=True)
 	created = models.DateTimeField(auto_now_add=True)
 	updated = models.DateTimeField(auto_now=True)

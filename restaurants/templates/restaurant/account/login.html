@@ -1,0 +1,49 @@
+{% extends "account/base.html" %}
+
+{% load i18n %}
+{% load account socialaccount %}
+
+{% block head_title %}{% trans "Sign In" %}{% endblock %}
+
+{% block content %}
+{% block formcontent %}
+
+<form class="ui huge form" method="POST" action="{% url 'account_login' %}">
+  {% csrf_token %}
+  <div class="field">
+    % get_providers as socialaccount_providers %}
+    {% if socialaccount_providers %}
+      {% include "socialaccount/snippets/provider_list.html" with process="login" %}
+      <button class="ui facebook button">
+      <i class="facebook icon"></i>
+      Facebook
+    </button>
+    <div class="login-or">{% trans 'or' %}</div>
+    {% else %}
+
+    {% endif %}
+  </div>
+  <div class="field">
+    <label for="id_login">Username</label>
+      <input autofocus="autofocus" class="form-control" id="id_login" maxlength="30" name="login" placeholder="Username" type="textbox" autocomplete=false/>
+  </div>
+  <div class="field">
+    <label for="id_password">Password</label>
+      <input id="id_password" class="form-control" name="password" placeholder="Password" type="password">
+  </div>
+  {% if redirect_field_value %}
+  <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}" />
+  {% endif %}
+  <div class="field">
+    <div class="ui toggle checkbox">
+      <input type="checkbox" name="remember" tabindex="0" class="hidden">
+      <label for="id_remember">Remember Me</label>
+    </div>
+  </div>
+  <div class="field">
+    <a class="button secondaryAction" href="{% url 'account_reset_password' %}">{% trans "Forgot your Password?" %}</a>
+  </div>
+  <button class="ui button" type="submit">Submit</button>
+</form>
+{% endblock formcontent %}
+{% endblock %}

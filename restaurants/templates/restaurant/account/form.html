@@ -1,0 +1,38 @@
+{% load  staticfiles future i18n %}
+{% extends 'restaurant/base.html' %}
+
+{% block title %}
+	Add Restaurant 
+{% endblock title %}
+
+{% block header %}
+	<div class="ui large top fixed hidden menu navbar">
+	  <div class="ui container">
+	    <div class="right menu">
+	    <div class="ui buttons">
+		  <a class="ui button tomato pair">Order Food</a>
+		  <div class="or"></div>
+		  <a class="ui positive button pair book">Book a Table</a>
+		</div>
+		<div class="ui buttons">
+		  <a class="ui button tomato loginbtn" href='javascript:;' onClick="AddLoginModalEvent();">Login</a>
+		</div>
+	    </div>
+	  </div>
+	</div>
+{% endblock header%}
+
+{% block content %}
+		<div class="ui vertical stripe segment" style="margin-top:5em;">
+   			 <div class="ui middle aligned stackable grid container">
+   			 	<div class="row">
+   			 		<div class="six wide column">
+   			 			<div class="ui segment">
+   			 				{% block formcontent %}
+   			 				{% endblock formcontent %}
+   			 			</div>
+   			 		</div>
+   			 	</div>
+   			 </div>
+   		</div>
+{% endblock %}
