@@ -5,24 +5,26 @@
 {% endblock title %}
 
 {% block header %}
-	<div class="ui large top fixed hidden menu navbar">
-	  <div class="ui container">
-	    <div class="right menu">
-	    <div class="ui buttons">
-		  <a class="ui button tomato pair">Order Food</a>
-		  <div class="or"></div>
-		  <a class="ui positive button pair book">Book a Table</a>
-		</div>
-		<div class="ui buttons">
-		  <a class="ui button tomato loginbtn" href='javascript:;' onClick="AddLoginModalEvent();">Login</a>
-		</div>
+	<nav class="navbar navbar-default">
+	  <div class="container-fluid">
+	    <div class="navbar-header">
+	      <div class="right menu">
+		    <div class="ui buttons">
+			  <a class="ui button tomato pair">Order Food</a>
+			  <div class="or"></div>
+			  <a class="ui positive button pair book">Book a Table</a>
+			</div>
+			<div class="ui buttons">
+			 <li> <a class="ui button tomato loginbtn" href="{% url 'account_login' %}">Login</a></li>
+			</div>
+		  </div>
 	    </div>
-	  </div>
-	</div>
+	 </div>
+	</nav>
 {% endblock header%}
 
 {% block content %}
-	<div class="ui vertical stripe segment" style="margin-top:5em;">
+	<div class="ui vertical stripe segment" style="margin-top:2em;">
     <div class="ui middle aligned stackable grid container">
     <h3 class="grey-text">Add a new restaurant</h3>
       <div class="row">

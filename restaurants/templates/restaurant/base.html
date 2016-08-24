@@ -8,112 +8,122 @@
 		<title>{% block title %}Foodie | Best Restaurant Finder App {% endblock title %}</title>
 	</head>
 	<link rel="stylesheet" type="text/css" href="{% static 'css/semantic.min.css' %}" />
+	<link rel="stylesheet" type="text/css" href="{% static 'css/bootstrap.min.css' %}" />
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css"/>
 	<link rel="stylesheet" type="text/css" href="{% static 'css/main.css' %}" />
 	<body>
 		<!-- Following Menu -->
 {% block header %}
 	<div class='homeBackground'>
-		<div class="ui large top fixed hidden menu navbar">
-		  <div class="ui container">
-		    <div class="right menu">
-		    <div class="ui buttons">
-			  <a class="ui button tomato pair">Order Food</a>
-			  <div class="or"></div>
-			  <a class="ui positive button pair book">Book a Table</a>
+		<div class="container-fluid">
+		<nav class="navbar navbar-dark bg-inverse">
+		  <button class="navbar-toggler hidden-sm-up" type="button" data-toggle="collapse" data-target="#exCollapsingNavbar2" aria-controls="exCollapsingNavbar2" aria-expanded="false" aria-label="Toggle navigation">
+		    &#9776;
+		  </button>
+		  <div class="collapse navbar-toggleable-xs" id="exCollapsingNavbar2">
+		    <a class="navbar-brand" href="#"><img src="{% static 'img/foodieLogo.png'%}" alt="" class="img-fluid"></a>
+		    <ul class="nav navbar-nav pull-xs-right">
+		      <li class="nav-item active">
+		        <a class="nav-link" href="#">Welcome <span class="sr-only">(current)</span></a>
+		      </li>
+		      <li class="nav-item">
+		        <a class="nav-link" href="#">Add Restaurant</a>
+		      </li>
+		      <li class="nav-item">
+		        <div class="ui buttons">
+				  <a class="nav-link ui button tomato pair">Order Food</a>
+				  <div class="or"></div>
+				  <a class="nav-link ui positive button pair book">Book a Table</a>
 			</div>
-			<div class="ui buttons">
-			 <li> <a class="ui button tomato loginbtn">Login</a></li>
-			</div>
-		    </div>
+		      </li>
+		      {% if user.is_authenticated %}
+			      <li class="nav-item">
+					  	<a class="nav-link user-icon" href="{% url 'userprofiles:profile' user.username|slugify %}"><i class="fa fa-user"></i></a>
+				</li>
+			{% else %}
+				<li class="nav-item">
+				      <div class="ui buttons">
+					  	<a class="ui button tomato loginbtn" href="{% url 'account_login' %}">Login</a>
+					</div>
+				</li>
+			{% endif %}
+		    </ul>
 		  </div>
-		</div>
+		</nav>
+		</div><!-- /.container-fluid -->
+
+		
 		<!-- Page Contents -->
-	<div class="pusher">
-	  <div class="ui inverted vertical masthead center aligned segment">
+		<div class="container head">
+			<div class="row">
+				<div class="col-sm-12 col-md-6">
+					<h2>FOODIE</h2>
+					<div class="hr-outline">
+						<h1><i class="fa fa-glass"></i></h1>
+					</div>
+					<p>we deliver healthy food that are ready to eat.Just choose your own menu you like.</p>
+					<a class="btn tomato btn-lg" href="#" role="button">About us</a>
+				</div>
+			</div>
+		</div>
 
-	    <div class="ui container">
-	      <!-- <div class="ui large secondary inverted pointing menu">
-	        <a class="toc item">
-	          <i class="sidebar icon"></i>
-	        </a>
-	        <a class="active item">Foodie</a>
-	        <div class="right item">
-	          <a class="ui inverted button">Log in</a>
-	          <a class="ui inverted button">Sign Up</a>
-	        </div>
-	      </div> -->
-	    </div>
-
-	    <div class="ui text container">
-	      <h1 class="ui inverted header">
-	        Foodie
-	      </h1>
-	      <h2>Find the best restaurants, cafés and bars in Ktm</h2>
-	     <div class="ui form container column four grid centered">
-		  <div class="row">
-		  <div class="inline fields container">
-		  	<div class="column">
-			    <div class="field">
-			    	<div class="ui icon input">
-			     		<input type="text" placeholder="location">
-			    		<i class="search icon"></i>
-			    	</div>
-			    </div>
-			 </div>
-
-			<div class="column">
-		    <div class="field">
-		      <select multiple="" class="ui dropdown selectBox">
-		      	<option value="">Select Feature</option>
-		      	<option value="BR">Breakfast</option>
-		      	<option value="LA">Launch</option>
-		      	<option value="DI">Dinner</option>
-		      	<option value="DE">Delivery</option>
-		      	<option value="CA">Cafe</option>
-		      	<option value="LU">Luxury Dining</option>
-		      	<option value="NI">Night Life</option>
-		      </select>
-		    </div>
-		    </div>
-
-		    <div class="column">
-		    <div class="field">
-			    <a class="ui button negative find">Find Food</a>
-		    </div>
-		   </div>
-		   </div>
-
-		  </div>
-	    </div>
-	    </div>
-
-	  </div>
-	  </div>
-	 </div>
+		<div class="container-fluid searchContainer">
+			<div class="row">
+				<div class="col-sm-12 col-md-12">
+					<form class="form-inline">
+					 <div class="form-group">
+					    <label class="sr-only" for="location">Location</label>
+					    <input type="text" class="form-control" id="location" placeholder="Location">
+					  </div>
+					  <button type="submit" class="btn tomato">Find a Restaurant</button>
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
 {% endblock header %}
 
-	 <div id="loginmodal"></div>
+	 <!-- <div id="loginmodal"></div> -->
 
+<div class="container-fluid">
 	 {% block content %}
 	 {% endblock %}
+</div>
 
+{% block jsfile %}
 	<script type="text/javascript" src="https://code.jquery.com/jquery-3.1.0.min.js"></script>
 	<script src="{% static 'js/semantic.min.js' %}"></script>
-	<script type="text/javascript" src="{% static 'build/js/app.js' %}"></script>
+	<script src="{% static 'js/bootstrap.min.js' %}"></script>
+	<!-- <script type="text/javascript" src="{% static 'build/js/app.js' %}"></script> -->
 	<script type="text/javascript">
-		  var data = {
-		         isUserAuthenticated:{% if request.user.is_authenticated %}true{% else %}false{% endif %}
-		    };
-
-		$(function() {
-
-		  app.showLoginModal("loginmodal",data);
-		});
-
+		function clickHandler(e) {
+		    var restaurant = $(e.target).closest(".restaurant-collection");
+		    console.log(restaurant);
+		    var type  = e.target.value;
+		    var id  = $(e.target).data("restaurant-id");
+		    console.log('id',id);
+		    $.ajax({
+		                type: "POST",
+		                url: "{% url 'restaurants:favorite' %}",
+		                data: {
+		                    'type': type,
+		                    'id': id,
+		                    'csrfmiddlewaretoken': '{{ csrf_token }}'
+		                    },
+		                success: function(response) {
+		                   var count_favorite = restaurant.find("#favorite-count-"+id).html(response.favorite_count);
+		                   var message = restaurant.find('.message').html('Thansk for giving your heart to us! We love you too.')
+		                    console.log(count_favorite);
+		                },
+		          }); 
+		}
 	</script>
 	<script>
-		$('select.dropdown')
+		$('select.selectBox')
 		  .dropdown();
+		  $('.ui.checkbox')
+		  .checkbox();
 	</script>
+{% endblock jsfile %}
 	</body>
 </html>

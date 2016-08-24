@@ -1,0 +1,51 @@
+[
+{
+  "model": "userprofiles.userprofile",
+  "pk": 1,
+  "fields": {
+    "user": 2,
+    "slug": "tushant",
+    "is_owner": true,
+    "restaurant": [
+      1
+    ],
+    "order_history": [
+      1,
+      2
+    ]
+  }
+},
+{
+  "model": "userprofiles.userprofile",
+  "pk": 2,
+  "fields": {
+    "user": 3,
+    "slug": "anonymous",
+    "is_owner": false,
+    "restaurant": [],
+    "order_history": []
+  }
+},
+{
+  "model": "userprofiles.userprofile",
+  "pk": 4,
+  "fields": {
+    "user": 5,
+    "slug": "sans",
+    "is_owner": false,
+    "restaurant": [],
+    "order_history": []
+  }
+},
+{
+  "model": "userprofiles.userprofile",
+  "pk": 5,
+  "fields": {
+    "user": 1,
+    "slug": "admin",
+    "is_owner": false,
+    "restaurant": [],
+    "order_history": []
+  }
+}
+]

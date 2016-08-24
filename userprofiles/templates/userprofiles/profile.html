@@ -1,0 +1,43 @@
+{% extends 'restaurant/base.html' %}
+{% block title %}Foodie|{{ userProfile.user.username|capfirst }}{% endblock %}
+
+{% block header %}
+	<nav class="navbar navbar-default">
+	  <div class="container-fluid">
+	    <div class="navbar-header">
+	      <div class="right menu">
+		    <div class="ui buttons">
+			  <a class="ui button tomato pair">Order Food</a>
+			  <div class="or"></div>
+			  <a class="ui positive button pair book">Book a Table</a>
+			</div>
+			<div class="ui buttons">
+			 <li> <a class="ui button tomato loginbtn" href="{% url 'account_login' %}">Login</a></li>
+			</div>
+		  </div>
+	    </div>
+	 </div>
+	</nav>
+{% endblock %}
+
+{% block content %}
+	<div class="text-center">Welcome {{ userprofile.user.username|title }} to your Profile zone.</div>
+	{{restaurant_name}}
+	{% for user_restaurant in user_restaurant %}
+		{{user_restaurant.name}}<br/>
+		{{user_restaurant.address }}
+	{% endfor %}
+	{% if userprofile.is_owner %}
+		<p>i am owner</p>
+	{% else %}
+		<p>I am buyer</p>
+	{% endif %}
+	{% if user_order %}
+		{% for user_order in user_order %}
+			{{user_order.menu}}<br/>
+			{{user_order.order.created }}<br/>
+			<p>{{user_order.get_cost}}</p>
+		{% endfor %}
+	Total purchase:{{ total_purchase }}
+	{% endif %}
+{% endblock %}

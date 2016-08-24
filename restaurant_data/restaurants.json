@@ -1,0 +1,209 @@
+[
+{
+  "model": "restaurants.featurechoice",
+  "pk": 1,
+  "fields": {
+    "features": "BR"
+  }
+},
+{
+  "model": "restaurants.featurechoice",
+  "pk": 2,
+  "fields": {
+    "features": "LA"
+  }
+},
+{
+  "model": "restaurants.featurechoice",
+  "pk": 3,
+  "fields": {
+    "features": "DI"
+  }
+},
+{
+  "model": "restaurants.timingchoice",
+  "pk": 1,
+  "fields": {
+    "timings": "MO"
+  }
+},
+{
+  "model": "restaurants.timingchoice",
+  "pk": 2,
+  "fields": {
+    "timings": "TU"
+  }
+},
+{
+  "model": "restaurants.timingchoice",
+  "pk": 3,
+  "fields": {
+    "timings": "WE"
+  }
+},
+{
+  "model": "restaurants.timingchoice",
+  "pk": 4,
+  "fields": {
+    "timings": "TH"
+  }
+},
+{
+  "model": "restaurants.timingchoice",
+  "pk": 5,
+  "fields": {
+    "timings": "FR"
+  }
+},
+{
+  "model": "restaurants.favorite",
+  "pk": 8,
+  "fields": {
+    "restaurant": 1,
+    "ip": "127.0.0.1",
+    "user_agent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/52.0.2743.116 Safari/537.36",
+    "mark_favorite": "favorite",
+    "created": "2016-08-20T12:33:18.731Z"
+  }
+},
+{
+  "model": "restaurants.restaurant",
+  "pk": 1,
+  "fields": {
+    "owner": 2,
+    "name": "Tushant Open Restaurant",
+    "slug": "tushant-open-restaurant",
+    "address": "Koteshowor-35",
+    "city": "Kathmandu",
+    "lat": "0.000000",
+    "lag": "0.000000",
+    "phone_number": 9843698469,
+    "owner_email": "programmertushant@gmail.com",
+    "opening_status": 1,
+    "website": "",
+    "image": "upload/products/2016/08/20/carlsbad-restaurants.jpg",
+    "facebook_page": "",
+    "twitter_handle": "",
+    "other_details": "description over here about restaurant.",
+    "is_parking": false,
+    "is_wifi": true,
+    "available": true,
+    "created": "2016-08-19T05:17:55.569Z",
+    "updated": "2016-08-20T07:50:19.873Z",
+    "features": [
+      1,
+      2,
+      3
+    ],
+    "timings": [
+      1,
+      2,
+      3,
+      4,
+      5
+    ]
+  }
+},
+{
+  "model": "restaurants.operatingtime",
+  "pk": 1,
+  "fields": {
+    "restaurant": 1,
+    "opening_time": "10:00:00",
+    "closing_time": "21:00:00",
+    "day_of_week": 1
+  }
+},
+{
+  "model": "restaurants.operatingtime",
+  "pk": 2,
+  "fields": {
+    "restaurant": 1,
+    "opening_time": "10:00:00",
+    "closing_time": "21:00:00",
+    "day_of_week": 2
+  }
+},
+{
+  "model": "restaurants.operatingtime",
+  "pk": 3,
+  "fields": {
+    "restaurant": 1,
+    "opening_time": "10:00:00",
+    "closing_time": "21:00:00",
+    "day_of_week": 3
+  }
+},
+{
+  "model": "restaurants.operatingtime",
+  "pk": 4,
+  "fields": {
+    "restaurant": 1,
+    "opening_time": "10:00:00",
+    "closing_time": "21:00:00",
+    "day_of_week": 4
+  }
+},
+{
+  "model": "restaurants.operatingtime",
+  "pk": 5,
+  "fields": {
+    "restaurant": 1,
+    "opening_time": "10:00:00",
+    "closing_time": "18:00:00",
+    "day_of_week": 5
+  }
+},
+{
+  "model": "restaurants.menucategory",
+  "pk": 1,
+  "fields": {
+    "name": "sweets",
+    "slug": "sweets"
+  }
+},
+{
+  "model": "restaurants.menucategory",
+  "pk": 2,
+  "fields": {
+    "name": "Non-veg",
+    "slug": "non-veg"
+  }
+},
+{
+  "model": "restaurants.menu",
+  "pk": 1,
+  "fields": {
+    "menu_category": 1,
+    "restaurant": 1,
+    "name": "Kala Jamun",
+    "slug": "kala-jamun",
+    "image": "",
+    "description": "",
+    "price": "200.00",
+    "stock": 20,
+    "vote": 5,
+    "available": true,
+    "created": "2016-08-19T05:54:06.603Z",
+    "updated": "2016-08-19T05:54:50.151Z"
+  }
+},
+{
+  "model": "restaurants.menu",
+  "pk": 2,
+  "fields": {
+    "menu_category": 2,
+    "restaurant": 1,
+    "name": "Chicken Chowmin",
+    "slug": "chicken-chowmin",
+    "image": "",
+    "description": "",
+    "price": "120.00",
+    "stock": 10,
+    "vote": 4,
+    "available": true,
+    "created": "2016-08-19T05:54:29.064Z",
+    "updated": "2016-08-19T05:54:29.064Z"
+  }
+}
+]

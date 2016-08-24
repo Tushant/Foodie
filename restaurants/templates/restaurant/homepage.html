@@ -1,2 +1,62 @@
 {% extends 'restaurant/base.html' %}
+{% load staticfiles %}
 {% block title %} Foodie | Best Restaurant Finder App {% endblock title %}
+
+
+{% block content %}
+<div class="restaurant-collection">
+	<div class="message"></div>
+	<div class="row">
+	{% for res in restaurant %}
+			<div class="col-sm-12 col-md-4">
+				<div class="card">
+					<div class="card-block card-head">
+						<a href="{{res.get_absolute_url}}" class="card-link restaurant-name">{{res.name}}</a>
+						<form action="" method='post' class="card-link">
+							<p class="right">
+								<span class="rating"><input type="radio" name="vote" class="rating-input" value="favorite" id="favorite-{{res.id}}" data-restaurant-id="{{res.id}}" onclick="clickHandler(event)" />
+								<label for="favorite-{{res.id}}" class="rating-star"><i class="fa fa-heart-o"></i></label>
+                				<span id="favorite-count-{{res.pk}}" >{{res.count_favorite}}</span>
+								</span>
+							</p>
+						</form>
+					</div>
+					<img src="{% if res.image %}{{ res.image.url }} {% else %} {% static 'img/default.jpg' %} {% endif %}" alt="" class="img-fluid"/>
+					<div class="card-block footer-of-card">
+						<ul class="list-group list-group-flush">
+						    <li class="list-group-item">Address: {{ res.address }}</li>
+						      {% if res.timings %}
+						    	<li class="list-group-item">Timings:
+						    	{% for timing in res.timings.all %}
+						   		{{ timing }}
+						   		{% endfor %}
+						   		</li>
+						    {% endif %}
+						</ul>
+						
+					</div>
+					<div class="card-block order-book">
+						 <a href="#" class="card-link card-link-footer order"><button class="tomato ui button">order</button></a>
+    					<a href="#" class="card-link card-link-footer booking"><button class="tomato ui button">Book</button></a>
+					</div>
+				</div>
+			</div>
+		{% endfor %}
+	</div>
+</div>
+{% endblock %}
+
+
+
+<div class="card">
+  <div class="card-block">
+    <h4 class="card-title">Card title</h4>
+    <h6 class="card-subtitle text-muted">Support card subtitle</h6>
+  </div>
+  <img src="..." alt="Card image">
+  <div class="card-block">
+    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+    <a href="#" class="card-link">Card link</a>
+    <a href="#" class="card-link">Another link</a>
+  </div>
+</div>

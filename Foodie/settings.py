@@ -38,9 +38,12 @@ INSTALLED_APPS = [
     'django.contrib.sites',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'rest_framework',
+    'app',
     'restaurants',
     'orders',
     'review',
+    'userprofiles',
     'allauth',
     'allauth.account',
     'allauth.socialaccount',
@@ -87,6 +90,7 @@ AUTHENTICATION_BACKENDS = (
 WSGI_APPLICATION = 'Foodie.wsgi.application'
 
 # auth and allauth settings
+ACCOUNT_SIGNUP_FORM_CLASS = 'userprofiles.forms.SignupForm'
 LOGIN_URL = '/accounts/login/'
 LOGIN_REDIRECT_URL = '/'
 SOCIALACCOUNT_QUERY_EMAIL = True
@@ -133,7 +137,7 @@ AUTH_PASSWORD_VALIDATORS = [
 
 LANGUAGE_CODE = 'en-us'
 
-TIME_ZONE = 'UTC'
+TIME_ZONE = 'Asia/Kathmandu'
 
 USE_I18N = True
 
@@ -154,3 +158,9 @@ STATICFILES_DIRS = (
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media/')
+
+# REST_FRAMEWORK = {
+#     'DEFAULT_AUTHENTICATION_CLASSES': (
+#         'rest_framework.authentication.BasicAuthentication',
+#     )
+# }

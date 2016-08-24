@@ -20,8 +20,13 @@ from django.contrib import admin
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
-    url(r'^restaurants/', include('restaurants.urls', namespace='restaurants')),
+    url(r'^', include('restaurants.urls', namespace='restaurants')),
+    url(r'^review/', include('review.urls', namespace='review')),
+    url(r'^userprofiles/', include('userprofiles.urls', namespace='userprofiles')),
+    url(r'^orders/', include('orders.urls', namespace='orders')),
     url(r'^accounts/', include('allauth.urls')),
+    url(r'^api/restaurant/', include('restaurants.api.urls',namespace='restaurants-api')),
+    url(r'^api/review/', include('review.api.urls',namespace='review-api')),
 ]
 if settings.DEBUG:
     urlpatterns += static(settings.MEDIA_URL,

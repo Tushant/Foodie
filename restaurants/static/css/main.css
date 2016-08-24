@@ -1,21 +1,168 @@
 .body{
 	font-family: Ubuntu !important;
+	background:#e9eaec;
 }
 
 .homeBackground{
-	background: url('../img/bbq.jpg') center center no-repeat;
+	background:linear-gradient(rgba(0,0,0, .5), rgba(0,0,0,.5)), url('../img/wallpaper1.jpg') center center no-repeat;
 	background-size: cover;
 }
 
+/* navbar */
+
 .navbar{
 	background: transparent !important;
-	margin-top: 20px !important;
+	margin-top: 0px !important;
 
 }
 
 .navbar a{
-	color:#fff !important;
+	color:#fcfcfc !important;
+	margin:10px;
+	font-family: Ubuntu;
 }
+
+.user-icon .fa-user{
+	color:#fcfcfc !important;
+	font-size:2em;
+}
+
+/* end of navbar */
+
+/* header */
+
+.head{
+	padding:7em;
+}
+
+.head h2{
+	color:#fff;
+	font-weight: bold;
+	font-size:7em;
+	font-family: Ubuntu;
+}
+
+.head h2 span{
+	color:green;
+}
+
+.head p{
+	color:#fff;
+	font-size:1.2em;
+}
+
+.head hr{
+	border:1px solid rgba(255, 255, 255, 0.9)
+}
+
+.hr-outline h1 {
+    overflow: hidden;
+    text-align: center;
+}
+
+.hr-outline h1:before,
+.hr-outline h1:after {
+    background-color: #fff;
+    content: "";
+    display: inline-block;
+    height: 1px;
+    position: relative;
+    vertical-align: middle;
+    width: 45%;
+}
+.hr-outline h1:before {
+    margin-left: -50%;
+}
+.hr-outline h1:after {
+    margin-right: -50%;
+}
+
+i.fa.fa-glass {
+    color: #ff5f5f;
+    font-size: 0.6em;
+}
+.head .btn{
+	border:none !important;
+	border-radius: 0;
+	font-size: 1.2em;
+	margin-top:15px;
+}
+
+/* end of header */
+
+/* search container */
+.searchContainer{
+	background:rgba(0,0,0,.5);
+	text-align: center;
+	width: 100%;
+	padding: 20px;
+}
+
+input#location {
+    height: 3em;
+    width: 300px;
+    background: rgba(255,255,255,0.7);
+}
+
+.searchContainer .btn{
+	height: 3em;
+}
+/* end */
+
+
+/* restaruant-collection */
+
+.message{
+color:#000;
+background: green;
+}
+
+.restaurant-collection{
+	margin-top:4em;
+}
+
+.card-head{
+	background: #ff5f5f;
+	color:#fff;
+	font-size:1em;
+}
+
+.restaurant-name{
+	color:#fff;
+}
+
+ .rating {
+      overflow: hidden;
+      display: inline-block;
+  }
+
+   .rating-input {
+      float: right;
+      width: 16px;
+      height: 16px;
+      padding: 0;
+      margin: 0 0 0 -16px;
+      opacity: 0;
+  }
+
+i.fa-heart-o:hover{
+	color:red;
+}
+
+form.card-link {
+    float: right;
+}
+
+.footer-of-card{
+	padding-bottom: 10px !important;
+	padding:0;
+}
+
+.booking{
+	float:right;
+}
+
+/* end */
 
 .pair{
 	padding:1em 1em !important;
@@ -46,20 +193,27 @@ a.loginbtn{
     color: #000 !important;
     background: #fff !important;
 }
+.subtitle{
+	color:#fff !important;
+	font-size: 24px;
+}
 
-.selectBox{
-	width: 100% !important;
+input.location {
+    margin-top: 16px !important;
+    border-radius: 4px !important;
+    background-color:#fff !important;
 }
 
 .find{
-	width: 100% !important;
+	color:#fff !important;
+	background:#ff5f5f !important;
 }
 
-.masthead{
+/*.masthead{
 	padding: 10em !important;
 	background: url('../img/bbq.jpg') center center no-repeat !important;
 	background-size: cover !important;
-}
+}*/
 
 .tomato{
 	color:#fff !important;
@@ -96,4 +250,46 @@ a.loginbtn{
 .infobox{
 	border: solid 1px #ddd;
 	color:#666;
+}
+
+
+/* user login */
+
+form.ui.huge.form {
+    margin-top: 25px !important;
+}
+
+.login-or{
+	font-size: 18px;
+	margin-top:35px;
+}
+
+.ui label{
+	font-size: 14px !important;
+	color:rgba(115, 112, 112, 0.87) !important;
+}
+
+.forgot a{
+	font-size: 14px !important;
+	color:#ff5f5f !important;
+	/*text-align: right !important;*/
+	float:right !important; 
+}
+
+/* restaurant detail */
+.cover_photo{
+	padding:1em 0 1em 0;
+	margin:0;
+}
+
+.tab-menu{
+	padding:21px 10px 21px 10px;
+	font-size:19px;
+}
+
+.blockquote {
+    padding: .5rem 1rem;
+    margin-bottom: 1rem;
+    font-size: 1.25rem;
+    border-left: .25rem solid #ff5f5f;
 }

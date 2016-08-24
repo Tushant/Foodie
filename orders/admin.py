@@ -33,10 +33,10 @@ order_detail.allow_tags = True
 
 class OrderMenuInline(admin.TabularInline):
 	model = OrderMenu
-	raw_id_fields = ['menu']
+	# raw_id_fields = ['menu']
 
 class OrderAdmin(admin.ModelAdmin):
-	list_display = ['id', 'first_name', 'last_name', 'email','address', 'postal_code', 'city', 'paid',
+	list_display = ['first_name', 'last_name', 'email','address', 'postal_code', 'city', 'paid',
 					'created', 'updated', order_detail]
 	list_filter = ['paid', 'created', 'updated']
 	inlines = [OrderMenuInline]

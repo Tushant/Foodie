@@ -1,0 +1,14 @@
+[
+{
+  "model": "review.review",
+  "pk": 1,
+  "fields": {
+    "vote": 5,
+    "user": 1,
+    "restaurant": 1,
+    "review": "has hospitable environment.",
+    "created": "2016-08-19T05:56:14.406Z",
+    "updated": "2016-08-19T05:56:14.406Z"
+  }
+}
+]

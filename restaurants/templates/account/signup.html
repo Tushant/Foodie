@@ -1,0 +1,52 @@
+{% extends "account/base.html" %}
+
+{% load i18n %}
+
+{% block head_title %}{% trans "Signup" %}{% endblock %}
+
+{% block content %}
+<h1 class="text-xs-center" style="margin-bottom:30px;">{% trans "Sign Up" %}</h1>
+
+
+<div class="container">
+  <div class="row">
+    <div class="col-xs-12 col-sm-12 col-md-6 col-md-offset-3" style="margin:5em;">
+        <div class="ui segment">
+          <p class="text-xs-center" style="margin-bottom:40px;">{% blocktrans %}Already have an account? Then please <a href="{{ login_url }}">sign in</a>.{% endblocktrans %}</p>
+          <form class="ui huge form" method="POST" action="{% url 'account_signup' %}">
+            {% csrf_token %}
+            <div class="field has-feedback has-feedback-right">
+              <label for="id_first_name">First Name</label>
+                <input autofocus="autofocus" class="form-control" id="id_first_name" maxlength="30" name="first_name" type="text" autocomplete=false/>
+            </div>
+            <div class="field has-feedback has-feedback-right">
+              <label for="id_last_name">Last Name</label>
+                <input autofocus="autofocus" class="form-control" id="id_last_name" maxlength="30" name="last_name" type="text" autocomplete=false>
+            </div>
+             <div class="field has-feedback has-feedback-right">
+              <label for="id_username">Username</label>
+                <input autofocus="autofocus" class="form-control" id="id_username" maxlength="30" name="username" type="text" autocomplete=false/>
+            </div>
+            <div class="field has-feedback has-feedback-right">
+              <label for="id_email">Email</label>
+                <input id="id_email" class="form-control" maxlength="30" name="email" autofocus="autofocus" autocomplete=false type="email">
+            </div>
+            <div class="field has-feedback has-feedback-right">
+              <label for="id_password1">Password</label>
+                <input id="id_password1" class="form-control" maxlength="30" name="password1" type="password" autocomplete=false/>
+            </div>
+            <div class="field has-feedback has-feedback-right">
+              <label for="id_password2">Confirm Password</label>
+                <input id="id_password2" class="form-control" maxlength="30" name="password2" type="password" autocomplete=false/>
+                <input id="id_confirmation_key" maxlength="40" name="confirmation_key" type="hidden">
+            </div>
+            <input type="hidden" name="{{ redirect_field_name }}" value="/" />
+            <button type="submit" class="ui button tomato fluid">{% trans "Sign Up" %}</button>
+          </form>
+        </div>
+    </div>
+  </div>
+</div>
+{% endblock %}
+
+
