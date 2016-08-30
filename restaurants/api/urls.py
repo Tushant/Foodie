@@ -5,7 +5,7 @@ from .views import (
     RestaurantCreateAPIView, RestaurantUpdateAPIView,
     OperatingTimeCreateAPIView, OperatingTimeUpdateAPIView,
     MenuListAPIView, MenuDetailAPIView, 
-    MenuCreateAPIView, MenuUpdateAPIView
+    MenuCreateAPIView, MenuUpdateAPIView, MenuCategoryDetailAPIView
                   )
 
 urlpatterns = [
@@ -15,6 +15,7 @@ urlpatterns = [
     url(r'^update/(?P<slug>[\w-]+)$', RestaurantUpdateAPIView.as_view(), name="restaurantupdateapiview"),
     url(r'^(?P<slug>[\w-]+)/$', RestaurantDetailAPIView.as_view(), name="restaurantdetailapiview"),
     url(r'^menu/(?P<slug>[\w-]+)/$', MenuDetailAPIView.as_view(), name="menu_detail_api"),
+    url(r'^menu_category/(?P<slug>[\w-]+)/$', MenuCategoryDetailAPIView.as_view(), name="menu_category_detail_api"),
 
     # menu post put
     url(r'^create/menu/$', MenuCreateAPIView.as_view(), name="menu_create_api"),

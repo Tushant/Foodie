@@ -43,8 +43,48 @@
 {% endblock header %}
 
 {% block content %}
+<div class="detail">
+	<div class="row">
+		<div class="col-md-12 cover_photo">
+			<img src="{% if restaurant_instance.image %}{{restaurant_instance.image.url}} {% else%} {% static 'img/default.jpg'%} {% endif%}" 
+				alt="" class="img-fluid" height="400px";/>
+		</div>
+	</div>
+	
+	<div class="col-sm-12 col-md-12">
+		<div class="ui threaded comments" style="padding:4em;">
+			<form action="." method="POST">
+				{{ review_form }}
+				{% csrf_token %}
+				<input type="submit" class="btn tomato"/>
+			</form>
+		  <h3 class="ui dividing header">Comments</h3>
+		 {% for review in reviews %}
+		  <blockquote class="blockquote">
+		  	<span> {{review.reviewer }} <p class="lead"> {{ review.review }} </p></span>
+		  	<footer> <small>{{review.created|timesince}} ago, {{ review.children.count }} replies </small> </footer>
+			{% for child_review in review.children %}
+			<blockquote class="blockquote">
+			  	<span> {{child_review.reviewer }} <p class="lead"> {{ child_review.review }} </p></span>
+			  	<footer> {{child_review.created|timesince}} ago </footer>
+		  	</blockquote>
+			{% endfor %}
+
+		  	<form action="." method="POST">
+				{{ review_form }}
+				{% csrf_token %}
+				<input type="hidden" name="parent_id" value="{{ review.id }}" />
+				<input type="submit" class="btn tomato" value="Reply" />
+			</form>
+		  </blockquote><hr/>
+		{% endfor %}
+		</div>
+	</div>
+	<div class="container" style="padding:5em;">
+	</div>
 	<div id="detail-restaurant">
 	</div>
+</div>
 	
 {% endblock %}
 

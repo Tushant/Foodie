@@ -62,7 +62,7 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
-ROOT_URLCONF = 'Foodie.urls'
+ROOT_URLCONF = 'Foodie.urls' # starts MVC patter from here that means settings to urls through ROOT_URLCONF and then to views, template and model
 
 TEMPLATES = [
     {

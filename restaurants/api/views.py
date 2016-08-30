@@ -6,7 +6,7 @@ from rest_framework.pagination import LimitOffsetPagination, PageNumberPaginatio
 from rest_framework.generics import ListAPIView, RetrieveAPIView, RetrieveUpdateAPIView, DestroyAPIView, CreateAPIView
 from .serializers import (
 		RestaurantSeraializer, RestaurantCreateUpdateSerializer, RestaurantDetailSerializer, MenuSerializer,
-		MenuCategorySerializer, MenuCreateUpdateSerializer, OperatingTimeCreateUpdateSerializer
+		MenuCategorySerializer, MenuCreateUpdateSerializer, OperatingTimeCreateUpdateSerializer, MenuCategorySerializer
 		)
 from rest_framework.permissions import AllowAny, IsAuthenticated, IsAdminUser, IsAuthenticatedOrReadOnly 
 
@@ -82,3 +82,8 @@ class MenuUpdateAPIView(RetrieveUpdateAPIView):
 	queryset = Menu.objects.all()
 	lookup_field = 'slug'
 	parser_classes = (FormParser,MultiPartParser,)
+
+class MenuCategoryDetailAPIView(RetrieveAPIView):
+	serializer_class = MenuCategorySerializer
+	queryset = MenuCategory.objects.all()
+	lookup_field = 'slug'

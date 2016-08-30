@@ -7,22 +7,21 @@ import _ from 'lodash';
 export default class RestaurantTabList extends Component {
 	renderList(){
 		return _.map(this.props.restaurantTab, ( tab ) => {
-			console.log('tab',tab);
 			return(
-					<li 
-						key = { tab.id } 
-						onClick = { () => this.props.selectRestaurantTab(tab) }
-						className="list-group-item tab-menu">
-						{ tab.title }
-					</li>
+					  <a className="item" key={ tab.id } onClick = { () => this.props.selectRestaurantTab(tab) }>
+					   { tab.title }
+					  </a>
 				);
 		});
 	}
 	render() {
 		return (
-			<ul className="list-group col-sm-4">
-				{this.renderList()}  {/* it is a helper function */}
-			</ul>
+			<div className="tab-menu">
+				<div className="ui secondary pointing menu">
+					{this.renderList()}
+				</div>
+			</div>
+			
 		);
 	}
 }

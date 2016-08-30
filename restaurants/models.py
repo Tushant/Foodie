@@ -232,7 +232,7 @@ class Menu(models.Model):
 	image = models.ImageField(upload_to='products/%Y/%m/%d', blank=True)
 	description = models.TextField(blank=True)
 	price = models.DecimalField(max_digits=10,decimal_places=2)
-	stock = models.PositiveIntegerField()
+	# stock = models.PositiveIntegerField()
 	vote = models.SmallIntegerField(choices=STARS, default=5)
 	available = models.BooleanField(default=True)
 	created = models.DateTimeField(auto_now_add=True)

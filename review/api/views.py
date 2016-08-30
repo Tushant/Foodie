@@ -7,7 +7,7 @@ from rest_framework.parsers import FormParser, MultiPartParser
 from rest_framework.pagination import LimitOffsetPagination, PageNumberPagination
 from rest_framework.generics import ListAPIView, RetrieveAPIView, RetrieveUpdateAPIView, DestroyAPIView, CreateAPIView
 from .serializers import (
-		ReviewSeraializer, ReviewCreateUpdateSerializer, ReviewDetailSeraializer,
+		ReviewSeraializer, ReviewCreateUpdateSerializer, ReviewDetailSeraializer, create_review_serializer,
 		RateSerializer, RateCreateUpdateSerializer
 		)
 from rest_framework.permissions import AllowAny, IsAuthenticated, IsAdminUser, IsAuthenticatedOrReadOnly 
@@ -38,19 +38,25 @@ class ReviewDetailAPIView(RetrieveAPIView):
 	lookup_field = 'pk'
 
 class ReviewCreateAPIView(CreateAPIView):
-	serializer_class = ReviewCreateUpdateSerializer
 	queryset = Review.objects.all()
-	parser_classes = (FormParser,MultiPartParser,)
+	# permisssion_classes = [IsAuthenticated]
 
-	def perform_create(self, serializer):
-		print('serializer',serializer)
-		print('self',self)
-		print('self.request',self.request.user)
-		serializer.save(reviewer=self.request.user)
+	def get_serializer_class(self):
+		print('hello')
+		model_type = self.request.GET.get('type')
+		slug = self.request.GET.get('slug')
+		parent_id = self.request.GET.get('parent_id', None)
+		return create_review_serializer(model_type=model_type, slug=slug, parent_id=parent_id, reviewer=self.request.user)
 
-	@method_decorator(csrf_exempt)
-	def dispatch(self, request, *args, **kwargs):
-		return super(ReviewCreateAPIView, self).dispatch(request, *args, **kwargs)
+	# def perform_create(self, serializer):
+	# 	print('serializer',serializer)
+	# 	print('self',self)
+	# 	print('self.request',self.request.user)
+	# 	serializer.save(reviewer=self.request.user)
+
+	# @method_decorator(csrf_exempt)
+	# def dispatch(self, request, *args, **kwargs):
+	# 	return super(ReviewCreateAPIView, self).dispatch(request, *args, **kwargs)
 
 class ReviewUpdateAPIView(RetrieveUpdateAPIView):
 	serializer_class = ReviewCreateUpdateSerializer

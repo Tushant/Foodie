@@ -8,6 +8,7 @@ from restaurants.models import ( Restaurant, OperatingTime, MenuCategory,
 								)
 from review.api.serializers import ReviewSeraializer
 from review.models import Review
+from restaurants.models import Menu, MenuCategory
 
 from django.contrib.auth.models import User 
 
@@ -46,6 +47,7 @@ class RestaurantDetailSerializer(ModelSerializer):
 	features = FeaturehoiceSerializer(many=True)
 	timings = TimingChoiceSerializer(many=True)
 	review = SerializerMethodField()
+	menu = SerializerMethodField()
 	class Meta:
 		model = Restaurant
 		read_only = ('id',)
@@ -59,6 +61,18 @@ class RestaurantDetailSerializer(ModelSerializer):
 		review_qs = Review.objects.filter_by_instance(obj)
 		review = ReviewSeraializer(review_qs, many=True).data 
 		return review
+
+	def get_menu(self, obj):
+		print('obj',obj)
+		restaurant = Restaurant.objects.get(slug=str(obj.slug))
+		menu_qs = restaurant.menu_set.filter(available=True)
+		print('menu_qs',menu_qs)
+		menu = MenuSerializer(menu_qs, many=True).data
+		return menu
+
+	# def get_menu_category(self, obj):
+	# 	restaurant = Restaurant.objects.get(slug=obj.slug)
+
 
 
 
@@ -87,15 +101,24 @@ class OperatingTimeCreateUpdateSerializer(ModelSerializer):
 		fields = ('restaurant','opening_time','closing_time','day_of_week',)
 
 class MenuCategorySerializer(ModelSerializer):
+	# menu = SerializerMethodField()
 	class Meta:
 		model = MenuCategory
 
+	# def get_menu(self, obj):
+	# 	menu_category = MenuCategory.objects.get(slug=obj.slug)
+	# 	menu_qs = menu_category.menu.filter(available=True)
+	# 	menu = MenuSerializer(menu_qs, many=True).data
+	# 	return menu
+
 class MenuSerializer(ModelSerializer):
-	restaurant = RestaurantSeraializer(read_only=True, many=False)
 	menu_category = MenuCategorySerializer(read_only=True, many=False)
 	class Meta:
 		model = Menu
 		read_only = ('id',)
+
+		# menu - > Restaurant
+		# menu - > menu_category
 
 class MenuCreateUpdateSerializer(ModelSerializer):
 	class Meta:

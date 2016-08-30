@@ -12,7 +12,7 @@ class ReviewManager(models.Manager):
 		return qs
 
 	def filter_by_instance(self, instance):
-		print('instance is',instance) # Kathmandu Fast Food Center
+		 # Kathmandu Fast Food Center
 		# content_type = ContentType.objects.get_for_model(Restaurant)
 		content_type = ContentType.objects.get_for_model(instance.__class__)
 		obj_id = instance.id # Restaurant.objects.get(id=restaurant.id)
@@ -20,10 +20,28 @@ class ReviewManager(models.Manager):
 		# Review.objects is replaced by super(ReviewManager,self)
 		return qs
 
+	def create_for_model_type(self, model_type, slug, review, reviewer, parent_obj=None):
+		model_qs = ContentType.objects.filter(model=model_type)
+		if  model_qs.exists():
+			SomeModel = model_qs.first().model_class()
+			obj_qs = SomeModel.objects.filter(slug=slug) # Restaurant.objects.filter(slug=self.slug)
+			if obj_qs.exists() and obj_qs.count() == 1:
+				instance = self.model()
+				instance.review = review
+				instance.reviewer = reviewer
+				print('instance.reviewer',instance.reviewer)
+				instance.content_type = model_qs.first()
+				instance.object_id = obj_qs.first().id
+				if parent_obj:
+					instance.parent = parent_obj
+				instance.save()
+				return instance
+		return None
+
 
 
 class Review(models.Model):
-	reviewer = models.ForeignKey(User) #user
+	reviewer = models.ForeignKey(User, null=True) #user
 	# slug = models.SlugField(max_length=150,blank=True)
 	# restaurant = models.ForeignKey(Restaurant) #Post
 
