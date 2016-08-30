@@ -13,6 +13,8 @@ from .models import Restaurant, OperatingTime, Favorite
 from .forms import AddRestaurantForm, FavoriteForm
 from review.forms import ReviewForm
 from review.models import Review
+from restaurants.utils import nearby_restaurants
+from restaurants.utils import CustomEncoder
 
 
 def base(request):
@@ -103,3 +105,12 @@ def add_restaurant(request):
 		return redirect('/')
 	form = AddRestaurantForm()
 	return render(request, 'restaurant/add_restaurant.html',{'form':form})
+
+def search_restaurant(request):
+	latitude = request.GET.get('latitude', None)
+	longitude = request.GET.get('longitude', None)
+	if latitude and longitude:
+		restaurants = nearby_restaurants(latitude, longitude)
+		return HttpResponse(json.dumps(restaurants, cls=CustomEncoder))
+	else:
+		return HttpResponse(json.dumps({'status':False}))
