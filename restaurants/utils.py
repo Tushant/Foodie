@@ -20,21 +20,21 @@ def distance_in_kms(lat1, long1, lat2, long2):
     return arc * 6371
 
 def getKey(item):
-	return item['fields']['distance']
+    return item['fields']['distance']
 
 def nearby_restaurants(latitude, longitude):
-	restaurants = Restaurant.objects.all()
-	restaurants = serializers.serialize('python', restaurants)
-	for restaurant in restaurants:
-		restaurant['fields']['distance'] = distance_in_kms(float(latitude), float(longitude), float(restaurant['fields']['lat']), float(restaurant['fields']['lag']))
-		print latitude, longitude, restaurant['fields']['lat'], restaurant['fields']['lag']
-	temp = sorted(restaurants, key=getKey)
-	return temp
+    restaurants = Restaurant.objects.all()
+    restaurants = serializers.serialize('python', restaurants)
+    for restaurant in restaurants:
+        restaurant['fields']['distance'] = distance_in_kms(float(latitude), float(longitude), float(restaurant['fields']['lat']), float(restaurant['fields']['lag']))
+        print latitude, longitude, restaurant['fields']['lat'], restaurant['fields']['lag']
+    temp = sorted(restaurants, key=getKey)
+    return temp
 
 class CustomEncoder(json.JSONEncoder):
-	def default(self, obj):
-		if isinstance(obj, decimal.Decimal):
-			return "%.2f" % obj
-		if isinstance(obj, datetime.datetime):
-			return str(obj)
-		return json.JSONEncoder.default(self, obj)
+    def default(self, obj):
+        if isinstance(obj, decimal.Decimal):
+            return "%.2f" % obj
+        if isinstance(obj, datetime.datetime):
+            return str(obj)
+        return json.JSONEncoder.default(self, obj)
